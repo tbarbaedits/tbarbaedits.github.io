@@ -110,6 +110,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Hero Cursor-Follow Glow ---
+    const hero = document.getElementById('hero');
+    const heroGlow = document.getElementById('heroCursorGlow');
+    if (hero && heroGlow) {
+        const GLOW_HALF = 250; // half of 500px glow size
+        let rafId = null;
+        let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+        let initialized = false;
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            targetX = e.clientX - rect.left;
+            targetY = e.clientY - rect.top;
+            if (!initialized) {
+                currentX = targetX;
+                currentY = targetY;
+                initialized = true;
+            }
+            if (!rafId) animateGlow();
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            heroGlow.style.opacity = '0';
+        });
+        hero.addEventListener('mouseenter', () => {
+            heroGlow.style.opacity = '1';
+        });
+
+        function animateGlow() {
+            currentX += (targetX - currentX) * 0.15;
+            currentY += (targetY - currentY) * 0.15;
+            heroGlow.style.transform = `translate(${currentX - GLOW_HALF}px, ${currentY - GLOW_HALF}px)`;
+            if (Math.abs(targetX - currentX) > 0.3 || Math.abs(targetY - currentY) > 0.3) {
+                rafId = requestAnimationFrame(animateGlow);
+            } else {
+                rafId = null;
+            }
+        }
+    }
+
+    // --- Magnetic Buttons ---
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.18}px, ${y * 0.28}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+
+    // --- Stat Count-Up ---
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.count, 10);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1400;
+                const start = performance.now();
+                function tick(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.round(target * eased) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+                statObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-number[data-count]').forEach(el => statObserver.observe(el));
+
     // --- Contact Form ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {

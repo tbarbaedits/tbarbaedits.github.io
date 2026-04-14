@@ -14,8 +14,8 @@
     <link rel="apple-touch-icon" href="assets/tbarba-logo.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
     <!-- Navigation -->
@@ -44,50 +44,72 @@
     <section class="hero" id="hero">
         <div class="hero-bg">
             <div class="hero-gradient"></div>
+            <div class="hero-glow-bl"></div>
+            <div class="hero-glow-tr"></div>
             <div class="hero-grid"></div>
+            <div class="hero-cursor-glow" id="heroCursorGlow"></div>
         </div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                Available for new projects
+                <span class="badge-text">AVAILABLE FOR NEW PROJECTS</span>
             </div>
-            <h1 class="hero-title">
-                I edit videos for<br>
-                <span class="hero-title-gradient">YouTubers who<br>want to grow.</span>
+            <div class="hero-eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>RETENTION IS THE OBSESSION</span>
+            </div>
+            <h1 class="hero-title reveal-words">
+                <span>I</span> <span>edit</span> <span>videos</span> <span>for</span><br>
+                <span>YouTubers</span> <span>who</span> <span>want</span> <span>to</span> <span class="hero-title-gradient">grow<span class="cursor-underscore">.</span></span>
             </h1>
             <p class="hero-subtitle">
                 You film. I make it unforgettable. Professional editing, motion graphics
-                & 3D animation for creators ready to level up their content.
+                &amp; 3D animation for creators ready to level up their content.
             </p>
             <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">
+                <a href="#contact" class="btn btn-primary magnetic">
                     <span>Start a Project</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="#work" class="btn btn-secondary">
+                <a href="#work" class="btn btn-secondary magnetic">
                     <span>See My Work</span>
                 </a>
             </div>
+            <div class="hero-ticker">
+                <span class="tk-item">GAMING</span>
+                <span class="tk-dot"></span>
+                <span class="tk-item">SHORTS</span>
+                <span class="tk-dot"></span>
+                <span class="tk-item">3D / MOTION</span>
+                <span class="tk-dot"></span>
+                <span class="tk-meta">FROM $75 / VIDEO</span>
+                <span class="tk-dot"></span>
+                <span class="tk-meta">US &amp; EU HOURS</span>
+            </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number">50+</span>
+                    <span class="stat-number" data-count="50" data-suffix="+">50+</span>
                     <span class="stat-label">Videos Edited</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
                     <span class="stat-number">3D</span>
-                    <span class="stat-label">Motion & Animation</span>
+                    <span class="stat-label">Motion &amp; Animation</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-number">24h</span>
+                    <span class="stat-number" data-count="24" data-suffix="h">24h</span>
                     <span class="stat-label">Avg. Response Time</span>
                 </div>
             </div>
         </div>
         <div class="hero-scroll">
             <div class="scroll-line"></div>
-            <span>Scroll</span>
+            <span>SCROLL</span>
         </div>
     </section>
 
@@ -560,6 +582,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>

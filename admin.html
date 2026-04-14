@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBarba Portfolio Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0b; color: #f0f0f0; min-height: 100vh; }
+        .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+        h1 { font-size: 1.8rem; margin-bottom: 8px; }
+        .subtitle { color: #6b6b75; margin-bottom: 32px; }
+        .section { background: #16161a; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+        .section h2 { font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .section h2 span { background: rgba(124,92,255,0.15); color: #7c5cff; padding: 2px 10px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; }
+
+        /* Form */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; margin-bottom: 12px; align-items: end; }
+        .form-row-channel { grid-template-columns: 1fr 1fr auto; }
+        label { display: block; font-size: 0.8rem; color: #a0a0a8; margin-bottom: 4px; font-weight: 500; }
+        input, select { width: 100%; padding: 10px 14px; background: #0a0a0b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #f0f0f0; font-family: inherit; font-size: 0.9rem; }
+        input:focus, select:focus { outline: none; border-color: #7c5cff; }
+        select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236b6b75' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+        select option { background: #16161a; }
+        .btn { padding: 10px 20px; border: none; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+        .btn-add { background: #7c5cff; color: white; }
+        .btn-add:hover { background: #6a4ae0; }
+        .btn-danger { background: rgba(255,60,60,0.1); color: #ff5555; border: 1px solid rgba(255,60,60,0.2); padding: 8px 14px; font-size: 0.8rem; }
+        .btn-danger:hover { background: rgba(255,60,60,0.2); }
+        .btn-save { background: linear-gradient(135deg, #7c5cff, #5b8def); color: white; padding: 14px 32px; font-size: 1rem; width: 100%; }
+        .btn-save:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(124,92,255,0.2); }
+        .btn-copy { background: #1e1e23; color: #a0a0a8; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-copy:hover { color: white; border-color: rgba(255,255,255,0.2); }
+
+        /* Item list */
+        .item-list { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+        .item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #1e1e23; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); }
+        .item-thumb { width: 80px; height: 45px; border-radius: 6px; object-fit: cover; background: #0a0a0b; }
+        .item-info { flex: 1; }
+        .item-id { font-size: 0.85rem; font-weight: 600; color: #f0f0f0; }
+        .item-meta { font-size: 0.75rem; color: #6b6b75; margin-top: 2px; }
+        .item-tag { display: inline-block; padding: 2px 8px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; }
+        .item-tag-longform { background: rgba(124,92,255,0.15); color: #7c5cff; }
+        .item-tag-shorts { background: rgba(0,212,170,0.15); color: #00d4aa; }
+        .item-tag-3d { background: rgba(91,141,239,0.15); color: #5b8def; }
+
+        /* Output */
+        .output-area { background: #0a0a0b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.8rem; color: #a0a0a8; max-height: 200px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; margin-top: 12px; }
+        .success { color: #00d4aa; font-weight: 600; padding: 12px; text-align: center; background: rgba(0,212,170,0.08); border-radius: 8px; margin-top: 12px; display: none; }
+        .instructions { background: rgba(124,92,255,0.05); border: 1px solid rgba(124,92,255,0.15); border-radius: 12px; padding: 20px; margin-top: 24px; }
+        .instructions h3 { font-size: 1rem; margin-bottom: 12px; color: #7c5cff; }
+        .instructions ol { padding-left: 20px; }
+        .instructions li { font-size: 0.85rem; color: #a0a0a8; margin-bottom: 8px; line-height: 1.5; }
+        .instructions code { background: #1e1e23; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; color: #f0f0f0; }
+
+        @media (max-width: 768px) {
+            .form-row, .form-row-channel { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TBarba Portfolio Manager</h1>
+        <p class="subtitle">Add, remove, and organize your portfolio videos. Changes are saved to portfolio.json.</p>
+
+        <!-- Add Video -->
+        <div class="section">
+            <h2>Videos <span id="videoCount">0</span></h2>
+            <div class="form-row">
+                <div>
+                    <label>YouTube Video ID or URL</label>
+                    <input type="text" id="videoInput" placeholder="dQw4w9WgXcQ or full URL">
+                </div>
+                <div>
+                    <label>Category</label>
+                    <select id="categoryInput">
+                        <option value="longform">Long-Form</option>
+                        <option value="shorts">Shorts</option>
+                        <option value="3d">3D & Motion</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Channel Name (optional)</label>
+                    <input type="text" id="channelInput" placeholder="e.g. MrBeast">
+                </div>
+                <div>
+                    <button class="btn btn-add" onclick="addVideo()">+ Add</button>
+                </div>
+            </div>
+            <div class="item-list" id="videoList"></div>
+        </div>
+
+        <!-- Channels -->
+        <div class="section">
+            <h2>Channels I've Worked With <span id="channelCount">0</span></h2>
+            <div class="form-row form-row-channel">
+                <div>
+                    <label>Channel Name</label>
+                    <input type="text" id="chNameInput" placeholder="e.g. PewDiePie">
+                </div>
+                <div>
+                    <label>Channel URL</label>
+                    <input type="text" id="chUrlInput" placeholder="https://youtube.com/@channel">
+                </div>
+                <div>
+                    <button class="btn btn-add" onclick="addChannel()">+ Add</button>
+                </div>
+            </div>
+            <div class="item-list" id="channelList"></div>
+        </div>
+
+        <!-- Save & Deploy -->
+        <div class="section">
+            <h2>Save & Deploy</h2>
+            <button class="btn btn-save" onclick="saveAndCopy()">Generate portfolio.json</button>
+            <div class="success" id="successMsg">portfolio.json copied to clipboard! Now follow the steps below.</div>
+            <div class="output-area" id="jsonOutput" style="display:none;"></div>
+            <div style="display:flex;gap:8px;margin-top:12px;">
+                <button class="btn btn-copy" onclick="copyJSON()">Copy JSON</button>
+                <button class="btn btn-copy" onclick="downloadJSON()">Download File</button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>How to update your live site</h3>
+            <ol>
+                <li>Add or remove videos and channels above</li>
+                <li>Click <strong>"Generate portfolio.json"</strong></li>
+                <li>Click <strong>"Download File"</strong> to save the file</li>
+                <li>Replace the <code>portfolio.json</code> in your project folder:<br>
+                    <code>C:\Users\carlo\Documents\tbarba-portfolio\portfolio.json</code></li>
+                <li>Open a terminal in your project folder and run:
+                    <br><code>git add portfolio.json && git commit -m "Update portfolio" && git push</code></li>
+                <li>Wait 1-2 minutes &mdash; your live site updates automatically!</li>
+            </ol>
+            <p style="margin-top:12px;font-size:0.8rem;color:#6b6b75;">Or just tell Claude Code: "update my portfolio and push" and it'll do it for you.</p>
+        </div>
+    </div>
+
+    <script>
+        let portfolioData = { videos: [], channels: [] };
+
+        // Load existing data
+        fetch('portfolio.json?v=' + Date.now())
+            .then(r => r.json())
+            .then(data => { portfolioData = data; renderAll(); })
+            .catch(() => renderAll());
+
+        function extractVideoId(input) {
+            input = input.trim();
+            // Full URL patterns
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
+                /^([a-zA-Z0-9_-]{11})$/
+            ];
+            for (const p of patterns) {
+                const m = input.match(p);
+                if (m) return m[1];
+            }
+            return input;
+        }
+
+        function addVideo() {
+            const input = document.getElementById('videoInput').value;
+            const category = document.getElementById('categoryInput').value;
+            const channel = document.getElementById('channelInput').value.trim();
+
+            const id = extractVideoId(input);
+            if (!id) return alert('Please enter a valid YouTube video ID or URL');
+            if (portfolioData.videos.some(v => v.id === id)) return alert('This video is already in your portfolio');
+
+            portfolioData.videos.push({ id, category, title: '', channel });
+            document.getElementById('videoInput').value = '';
+            document.getElementById('channelInput').value = '';
+            renderAll();
+        }
+
+        function removeVideo(index) {
+            portfolioData.videos.splice(index, 1);
+            renderAll();
+        }
+
+        function addChannel() {
+            const name = document.getElementById('chNameInput').value.trim();
+            const url = document.getElementById('chUrlInput').value.trim();
+            if (!name) return alert('Please enter a channel name');
+
+            portfolioData.channels.push({ name, url });
+            document.getElementById('chNameInput').value = '';
+            document.getElementById('chUrlInput').value = '';
+            renderAll();
+        }
+
+        function removeChannel(index) {
+            portfolioData.channels.splice(index, 1);
+            renderAll();
+        }
+
+        function renderAll() {
+            // Videos
+            const vList = document.getElementById('videoList');
+            document.getElementById('videoCount').textContent = portfolioData.videos.length;
+            vList.innerHTML = portfolioData.videos.map((v, i) => {
+                const tagClass = v.category === 'shorts' ? 'item-tag-shorts' : v.category === '3d' ? 'item-tag-3d' : 'item-tag-longform';
+                const tagLabel = v.category === 'shorts' ? 'Short' : v.category === '3d' ? '3D & Motion' : 'Long-Form';
+                return `<div class="item">
+                    <img class="item-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="">
+                    <div class="item-info">
+                        <div class="item-id">${v.id} ${v.channel ? '<span style="color:#6b6b75;font-weight:400">for ' + v.channel + '</span>' : ''}</div>
+                        <div class="item-meta"><span class="item-tag ${tagClass}">${tagLabel}</span></div>
+                    </div>
+                    <button class="btn btn-danger" onclick="removeVideo(${i})">Remove</button>
+                </div>`;
+            }).join('');
+
+            // Channels
+            const cList = document.getElementById('channelList');
+            document.getElementById('channelCount').textContent = portfolioData.channels.length;
+            cList.innerHTML = portfolioData.channels.map((ch, i) => {
+                return `<div class="item">
+                    <div class="item-info">
+                        <div class="item-id">${ch.name}</div>
+                        <div class="item-meta">${ch.url || 'No URL'}</div>
+                    </div>
+                    <button class="btn btn-danger" onclick="removeChannel(${i})">Remove</button>
+                </div>`;
+            }).join('');
+        }
+
+        function saveAndCopy() {
+            const json = JSON.stringify(portfolioData, null, 2);
+            document.getElementById('jsonOutput').textContent = json;
+            document.getElementById('jsonOutput').style.display = '';
+            navigator.clipboard.writeText(json).then(() => {
+                const msg = document.getElementById('successMsg');
+                msg.style.display = '';
+                setTimeout(() => msg.style.display = 'none', 4000);
+            });
+        }
+
+        function copyJSON() {
+            const json = JSON.stringify(portfolioData, null, 2);
+            navigator.clipboard.writeText(json).then(() => alert('Copied to clipboard!'));
+        }
+
+        function downloadJSON() {
+            const json = JSON.stringify(portfolioData, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'portfolio.json';
+            a.click();
+        }
+
+        // Enter key support
+        document.getElementById('videoInput').addEventListener('keydown', e => { if (e.key === 'Enter') addVideo(); });
+        document.getElementById('chNameInput').addEventListener('keydown', e => { if (e.key === 'Enter') addChannel(); });
+    </script>
+</body>
+</html>

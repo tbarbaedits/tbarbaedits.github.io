@@ -4,18 +4,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Load Portfolio from JSON ---
+    loadPortfolio();
+
     // --- Navigation Scroll Effect ---
     const nav = document.getElementById('nav');
-    let lastScroll = 0;
-
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > 50) {
+        if (window.scrollY > 50) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
-        lastScroll = currentScroll;
     });
 
     // --- Mobile Menu Toggle ---
@@ -28,36 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
     });
 
-    // Close mobile menu when clicking a link
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('open');
             navLinks.classList.remove('open');
             document.body.style.overflow = '';
-        });
-    });
-
-    // --- Portfolio Filter ---
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const workCards = document.querySelectorAll('.work-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-
-            workCards.forEach(card => {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.classList.remove('hidden');
-                    card.style.display = '';
-                } else {
-                    card.classList.add('hidden');
-                    card.style.display = 'none';
-                }
-            });
         });
     });
 
@@ -70,9 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.addEventListener('click', () => {
             pricingToggles.forEach(t => t.classList.remove('active'));
             toggle.classList.add('active');
-
             const pricingType = toggle.dataset.pricing;
-
             if (pricingType === 'per-video') {
                 perVideoPricing.classList.remove('pricing-hidden');
                 perVideoPricing.style.display = '';
@@ -88,11 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Scroll Fade-In Animations ---
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -100,131 +67,192 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    // Add fade-in to elements
-    const animateElements = document.querySelectorAll(
-        '.section-header, .work-card, .service-card, .pricing-card, ' +
+    document.querySelectorAll(
+        '.section-header, .service-card, .pricing-card, ' +
         '.about-content, .about-visual, .contact-info, .contact-form-wrapper, ' +
         '.testimonials-placeholder, .hero-stats'
-    );
-
-    animateElements.forEach(el => {
+    ).forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    // --- Smooth Scroll for Anchor Links ---
+    // --- Smooth Scroll ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
                 window.scrollTo({
-                    top: targetPosition,
+                    top: target.getBoundingClientRect().top + window.scrollY - navHeight - 20,
                     behavior: 'smooth'
                 });
             }
         });
     });
 
-    // --- Lazy Load YouTube Videos ---
-    // Replace iframes with thumbnails that load on click for faster page speed
-    const iframes = document.querySelectorAll('.video-wrapper iframe');
-
-    iframes.forEach(iframe => {
-        const src = iframe.src;
-        const videoId = src.match(/embed\/([^?]+)/)?.[1];
-
-        if (videoId) {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'video-placeholder';
-            placeholder.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg') center/cover no-repeat;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            `;
-
-            // Play button overlay
-            const playBtn = document.createElement('div');
-            playBtn.style.cssText = `
-                width: 64px;
-                height: 64px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform 0.3s ease, background 0.3s ease;
-            `;
-            playBtn.innerHTML = `
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            `;
-
-            placeholder.appendChild(playBtn);
-
-            placeholder.addEventListener('mouseenter', () => {
-                playBtn.style.transform = 'scale(1.1)';
-                playBtn.style.background = 'rgba(124, 92, 255, 0.9)';
-            });
-
-            placeholder.addEventListener('mouseleave', () => {
-                playBtn.style.transform = 'scale(1)';
-                playBtn.style.background = 'rgba(0, 0, 0, 0.7)';
-            });
-
-            placeholder.addEventListener('click', () => {
-                placeholder.remove();
-                iframe.style.display = '';
-                iframe.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
-            });
-
-            iframe.style.display = 'none';
-            iframe.parentElement.appendChild(placeholder);
-        }
-    });
-
-    // --- Contact Form Feedback ---
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<span>Sending...</span>';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.pointerEvents = 'none';
-        });
-    }
-
-    // --- Active Nav Link Highlighting ---
+    // --- Active Nav Link ---
     const sections = document.querySelectorAll('section[id]');
-
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY + 100;
-
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+            if (scrollY >= top && scrollY < top + height) {
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
+                    if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
                 });
             }
         });
     });
+
+    // --- Contact Form ---
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function () {
+            const btn = this.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span>Sending...</span>';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+        });
+    }
 });
+
+// ============================================
+// Portfolio Loading System
+// ============================================
+
+const CATEGORY_LABELS = {
+    longform: { label: 'Long-Form Edit', tagClass: 'work-tag' },
+    shorts:   { label: 'Short',          tagClass: 'work-tag tag-short' },
+    '3d':     { label: '3D & Motion',    tagClass: 'work-tag tag-3d' }
+};
+
+async function loadPortfolio() {
+    try {
+        const res = await fetch('portfolio.json?v=' + Date.now());
+        const data = await res.json();
+        renderVideos(data.videos);
+        renderChannels(data.channels);
+        setupFilters();
+    } catch (err) {
+        console.error('Failed to load portfolio:', err);
+    }
+}
+
+function renderVideos(videos) {
+    const grid = document.getElementById('workGrid');
+    grid.innerHTML = '';
+
+    videos.forEach(video => {
+        const cat = CATEGORY_LABELS[video.category] || CATEGORY_LABELS.longform;
+        const isShort = video.category === 'shorts';
+
+        const card = document.createElement('div');
+        card.className = `work-card${isShort ? ' work-card-short' : ''}`;
+        card.dataset.category = video.category;
+
+        // Build info line
+        let infoHTML = `<span class="${cat.tagClass}">${cat.label}</span>`;
+        if (video.channel) {
+            infoHTML += `<span class="work-channel">for ${video.channel}</span>`;
+        }
+
+        card.innerHTML = `
+            <div class="work-card-video">
+                <div class="video-wrapper${isShort ? ' video-wrapper-short' : ''}">
+                    <iframe src="https://www.youtube.com/embed/${video.id}" title="${video.title || 'Video'}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="display:none"></iframe>
+                </div>
+            </div>
+            <div class="work-card-info">
+                ${infoHTML}
+            </div>
+        `;
+
+        grid.appendChild(card);
+
+        // Lazy load with thumbnail
+        const iframe = card.querySelector('iframe');
+        const wrapper = card.querySelector('.video-wrapper');
+        createThumbnail(video.id, iframe, wrapper);
+    });
+
+    // Animate cards
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    grid.querySelectorAll('.work-card').forEach(c => { c.classList.add('fade-in'); obs.observe(c); });
+}
+
+function createThumbnail(videoId, iframe, wrapper) {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'video-placeholder';
+    placeholder.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg') center/cover no-repeat;cursor:pointer;display:flex;align-items:center;justify-content:center;`;
+
+    const playBtn = document.createElement('div');
+    playBtn.style.cssText = 'width:56px;height:56px;background:rgba(0,0,0,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,background 0.3s;';
+    playBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+
+    placeholder.appendChild(playBtn);
+    placeholder.addEventListener('mouseenter', () => { playBtn.style.transform = 'scale(1.1)'; playBtn.style.background = 'rgba(124,92,255,0.9)'; });
+    placeholder.addEventListener('mouseleave', () => { playBtn.style.transform = 'scale(1)'; playBtn.style.background = 'rgba(0,0,0,0.7)'; });
+    placeholder.addEventListener('click', () => {
+        placeholder.remove();
+        iframe.style.display = '';
+        iframe.src += (iframe.src.includes('?') ? '&' : '?') + 'autoplay=1';
+    });
+
+    wrapper.appendChild(placeholder);
+}
+
+function renderChannels(channels) {
+    const section = document.getElementById('channelsSection');
+    const grid = document.getElementById('channelsGrid');
+
+    if (!channels || channels.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+
+    section.style.display = '';
+    grid.innerHTML = '';
+
+    channels.forEach(ch => {
+        const link = document.createElement('a');
+        link.className = 'channel-chip';
+        link.href = ch.url || '#';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.innerHTML = `
+            <img src="https://i.ytimg.com/vi/${ch.sampleVideoId || ''}/default.jpg" alt="${ch.name}" onerror="this.style.display='none'">
+            <span>${ch.name}</span>
+        `;
+        grid.appendChild(link);
+    });
+}
+
+function setupFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const workCards = document.querySelectorAll('.work-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            workCards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                    card.style.display = '';
+                } else {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}

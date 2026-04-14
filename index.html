@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBarba | Professional Video Editor for YouTube Creators</title>
+    <meta name="description" content="Professional video editor specializing in YouTube content. Motion graphics, 3D animation, shorts, and full-service editing for creators who want to grow.">
+    <meta name="keywords" content="video editor, YouTube editor, freelance editor, motion graphics, 3D animation, hire video editor">
+    <meta property="og:title" content="TBarba | Professional Video Editor for YouTube Creators">
+    <meta property="og:description" content="You film. I make it unforgettable. Professional editing, motion graphics & 3D for YouTube creators.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="assets/tbarba-logo.svg" alt="TBarba Logo" class="nav-logo-img">
+                <span class="logo-text">TBARBA</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-btn">Hire Me</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for new projects
+            </div>
+            <h1 class="hero-title">
+                I edit videos for<br>
+                <span class="hero-title-gradient">YouTubers who<br>want to grow.</span>
+            </h1>
+            <p class="hero-subtitle">
+                You film. I make it unforgettable. Professional editing, motion graphics
+                & 3D animation for creators ready to level up their content.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Start a Project</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#work" class="btn btn-secondary">
+                    <span>See My Work</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Videos Edited</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">3D</span>
+                    <span class="stat-label">Motion & Animation</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">24h</span>
+                    <span class="stat-label">Avg. Response Time</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Software Bar -->
+    <section class="tools-bar">
+        <div class="container">
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <span class="tool-icon">Pr</span>
+                    <span class="tool-name">Premiere Pro</span>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">Ae</span>
+                    <span class="tool-name">After Effects</span>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">Ps</span>
+                    <span class="tool-name">Photoshop</span>
+                </div>
+                <div class="tool-item">
+                    <img src="assets/blender-logo.png" alt="Blender" class="tool-logo-img">
+                    <span class="tool-name">Blender</span>
+                </div>
+                <div class="tool-item">
+                    <img src="assets/maya-logo.png" alt="Maya" class="tool-logo-img">
+                    <span class="tool-name">Maya</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work / Portfolio Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Selected Work</h2>
+                <p class="section-desc">A showcase of my editing, motion graphics, and 3D work across different content styles.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="work-filters">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="longform">Long-Form</button>
+                <button class="filter-btn" data-filter="shorts">Shorts</button>
+                <button class="filter-btn" data-filter="3d">3D & Motion</button>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="work-grid">
+                <!-- Long Form Videos -->
+                <div class="work-card" data-category="longform">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/zMQrNp2zU1k" title="Video Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag">Long-Form Edit</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="longform">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dERKfU1yA0M" title="Video Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag">Long-Form Edit</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="longform">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/COSVcIayY7Y" title="Video Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag">Long-Form Edit</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="longform">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/4nxGGlRrf-g" title="Video Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag">Long-Form Edit</span>
+                    </div>
+                </div>
+
+                <!-- Shorts -->
+                <div class="work-card work-card-short" data-category="shorts">
+                    <div class="work-card-video">
+                        <div class="video-wrapper video-wrapper-short">
+                            <iframe src="https://www.youtube.com/embed/FQhsmSMMGHE" title="Short Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-short">Short</span>
+                    </div>
+                </div>
+
+                <div class="work-card work-card-short" data-category="shorts">
+                    <div class="work-card-video">
+                        <div class="video-wrapper video-wrapper-short">
+                            <iframe src="https://www.youtube.com/embed/47JUVTycJC8" title="Short Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-short">Short</span>
+                    </div>
+                </div>
+
+                <div class="work-card work-card-short" data-category="shorts">
+                    <div class="work-card-video">
+                        <div class="video-wrapper video-wrapper-short">
+                            <iframe src="https://www.youtube.com/embed/f5NYgU0i9JU" title="Short Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-short">Short</span>
+                    </div>
+                </div>
+
+                <div class="work-card work-card-short" data-category="shorts">
+                    <div class="work-card-video">
+                        <div class="video-wrapper video-wrapper-short">
+                            <iframe src="https://www.youtube.com/embed/pFKEJOgEKRo" title="Short Edit Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-short">Short</span>
+                    </div>
+                </div>
+
+                <!-- 3D Work -->
+                <div class="work-card" data-category="3d">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/r6blZ6qFUiM" title="3D Work Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-3d">3D & Motion</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="3d">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/xMNQDKxYCws" title="3D Work Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-3d">3D & Motion</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="3d">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/sPUiPw43wA0" title="3D Work Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-3d">3D & Motion</span>
+                    </div>
+                </div>
+
+                <div class="work-card" data-category="3d">
+                    <div class="work-card-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/EfNg-Lr8sc4" title="3D Work Sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <span class="work-tag tag-3d">3D & Motion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Services</span>
+                <h2 class="section-title">What I Do</h2>
+                <p class="section-desc">Full-service video editing tailored for YouTube creators. From raw footage to upload-ready content.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 16 21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3 class="service-name">Long-Form Editing</h3>
+                    <p class="service-desc">Full video edits with cuts, transitions, pacing, music sync, sound design, color grading, and text/graphics. Optimized for retention.</p>
+                    <ul class="service-list">
+                        <li>Jump cut & pacing optimization</li>
+                        <li>Music & sound design</li>
+                        <li>Color correction & grading</li>
+                        <li>Custom text & lower thirds</li>
+                    </ul>
+                </div>
+
+                <div class="service-card service-card-featured">
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                    </div>
+                    <h3 class="service-name">Shorts & Clips</h3>
+                    <p class="service-desc">Vertical short-form content repurposed from your long-form videos or created from scratch. Optimized for YouTube Shorts, TikTok & Reels.</p>
+                    <ul class="service-list">
+                        <li>Vertical 9:16 formatting</li>
+                        <li>Animated captions</li>
+                        <li>Hook-first editing</li>
+                        <li>Multi-platform delivery</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3 class="service-name">Motion Graphics & 3D</h3>
+                    <p class="service-desc">Custom motion graphics, 3D animations, intros/outros, and visual effects that make your channel instantly recognizable.</p>
+                    <ul class="service-list">
+                        <li>3D character & object animation</li>
+                        <li>Custom intros & outros</li>
+                        <li>Animated infographics</li>
+                        <li>Visual effects & compositing</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    </div>
+                    <h3 class="service-name">Thumbnails</h3>
+                    <p class="service-desc">Click-worthy thumbnails designed to boost your CTR. Custom compositions with bold text, clean cutouts, and scroll-stopping visuals.</p>
+                    <ul class="service-list">
+                        <li>Custom photo compositing</li>
+                        <li>Bold, readable text design</li>
+                        <li>A/B testing variations</li>
+                        <li>Brand-consistent styling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pricing</span>
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-desc">Choose per-video pricing to start, or save with a monthly retainer package.</p>
+            </div>
+
+            <div class="pricing-toggle">
+                <button class="pricing-toggle-btn active" data-pricing="per-video">Per Video</button>
+                <button class="pricing-toggle-btn" data-pricing="monthly">Monthly Retainer</button>
+            </div>
+
+            <!-- Per Video Pricing -->
+            <div class="pricing-grid" id="per-video-pricing">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3>Long-Form Edit</h3>
+                        <p class="pricing-desc">Full video editing for YouTube</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">75</span>
+                        <span class="pricing-period">/ video</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Up to 15 min final cut</li>
+                        <li><span class="check">&#10003;</span> Cuts, transitions & pacing</li>
+                        <li><span class="check">&#10003;</span> Music & basic sound design</li>
+                        <li><span class="check">&#10003;</span> Color correction</li>
+                        <li><span class="check">&#10003;</span> Text & basic graphics</li>
+                        <li><span class="check">&#10003;</span> 2 rounds of revisions</li>
+                        <li><span class="check">&#10003;</span> 3-5 day turnaround</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card pricing-card-featured">
+                    <div class="pricing-popular">Best Value</div>
+                    <div class="pricing-card-header">
+                        <h3>Full Package</h3>
+                        <p class="pricing-desc">Video + Shorts + Thumbnail</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">150</span>
+                        <span class="pricing-period">/ package</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Everything in Long-Form Edit</li>
+                        <li><span class="check">&#10003;</span> 3 YouTube Shorts from your video</li>
+                        <li><span class="check">&#10003;</span> 1 custom thumbnail</li>
+                        <li><span class="check">&#10003;</span> Motion graphics & animations</li>
+                        <li><span class="check">&#10003;</span> Priority turnaround (2-4 days)</li>
+                        <li><span class="check">&#10003;</span> 2 rounds of revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3>3D & Motion</h3>
+                        <p class="pricing-desc">Custom animation & VFX</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">200</span>
+                        <span class="pricing-period">/ project</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Custom 3D modeling</li>
+                        <li><span class="check">&#10003;</span> Character or product animation</li>
+                        <li><span class="check">&#10003;</span> Motion graphics sequences</li>
+                        <li><span class="check">&#10003;</span> Intro/outro animation</li>
+                        <li><span class="check">&#10003;</span> After Effects compositing</li>
+                        <li><span class="check">&#10003;</span> 2 rounds of revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Monthly Retainer Pricing -->
+            <div class="pricing-grid pricing-hidden" id="monthly-pricing">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3>Starter</h3>
+                        <p class="pricing-desc">For weekly uploaders</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">500</span>
+                        <span class="pricing-period">/ month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> 4 long-form video edits</li>
+                        <li><span class="check">&#10003;</span> Basic motion graphics</li>
+                        <li><span class="check">&#10003;</span> Color correction & grading</li>
+                        <li><span class="check">&#10003;</span> 2 revisions per video</li>
+                        <li><span class="check">&#10003;</span> 4-day turnaround per video</li>
+                        <li><span class="check">&#10003;</span> Direct messaging support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card pricing-card-featured">
+                    <div class="pricing-popular">Most Popular</div>
+                    <div class="pricing-card-header">
+                        <h3>Growth</h3>
+                        <p class="pricing-desc">For serious creators</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">800</span>
+                        <span class="pricing-period">/ month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> 4 long-form video edits</li>
+                        <li><span class="check">&#10003;</span> 8 YouTube Shorts</li>
+                        <li><span class="check">&#10003;</span> 4 custom thumbnails</li>
+                        <li><span class="check">&#10003;</span> Advanced motion graphics</li>
+                        <li><span class="check">&#10003;</span> 3-day priority turnaround</li>
+                        <li><span class="check">&#10003;</span> Dedicated support channel</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3>Premium</h3>
+                        <p class="pricing-desc">Full content team replacement</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-number">1,500</span>
+                        <span class="pricing-period">/ month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> 8 long-form video edits</li>
+                        <li><span class="check">&#10003;</span> 16 YouTube Shorts</li>
+                        <li><span class="check">&#10003;</span> 8 custom thumbnails</li>
+                        <li><span class="check">&#10003;</span> Custom 3D & VFX work</li>
+                        <li><span class="check">&#10003;</span> 48-hour rush turnaround</li>
+                        <li><span class="check">&#10003;</span> Strategy & content consulting</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+
+            <p class="pricing-note">All prices in USD. 50% deposit required to start. Custom quotes available for unique projects.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">About</span>
+                    <h2 class="section-title">The Editor Behind<br>the Edits</h2>
+                    <p class="about-text">
+                        I'm Barba, a video editor and 3D artist who's been deep in content creation
+                        and post-production for years. I specialize in making YouTube videos that viewers
+                        actually watch until the end.
+                    </p>
+                    <p class="about-text">
+                        My edge? I don't just cut footage &mdash; I combine professional editing with
+                        <strong>3D animation and motion graphics</strong> to create visuals that most editors
+                        simply can't. From gaming content to tech reviews, I understand what makes audiences
+                        click, stay, and subscribe.
+                    </p>
+                    <p class="about-text">
+                        When you work with me, you get a creative partner who cares about your channel's
+                        growth as much as you do. Fast communication, reliable delivery, and edits that
+                        make your content stand out.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">&#9889;</span>
+                            <div>
+                                <strong>Fast Turnaround</strong>
+                                <span>3-5 days per video</span>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">&#127912;</span>
+                            <div>
+                                <strong>3D Capable</strong>
+                                <span>Blender + After Effects</span>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">&#128172;</span>
+                            <div>
+                                <strong>Always Reachable</strong>
+                                <span>Response within hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-card">
+                        <div class="about-card-inner">
+                            <div class="about-card-top">
+                                <span class="card-label">Currently Working With</span>
+                                <span class="card-software">Premiere Pro &bull; After Effects &bull; Blender &bull; Photoshop &bull; Maya</span>
+                            </div>
+                            <div class="about-card-bottom">
+                                <div class="card-stat">
+                                    <span class="card-stat-value">YouTube</span>
+                                    <span class="card-stat-label">Primary Platform</span>
+                                </div>
+                                <div class="card-stat">
+                                    <span class="card-stat-value">English</span>
+                                    <span class="card-stat-label">Fluent Communication</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials placeholder -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Creators Say</h2>
+            </div>
+            <div class="testimonials-placeholder">
+                <p>I'm currently building my roster of long-term YouTube clients.<br>
+                <strong>Be one of the first</strong> &mdash; and get my best rates while I grow.</p>
+                <a href="#contact" class="btn btn-primary">
+                    <span>Claim Early Access Pricing</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Contact</span>
+                    <h2 class="section-title">Let's Make<br>Something Great</h2>
+                    <p class="contact-text">
+                        Ready to level up your content? Drop me a message with details about
+                        your channel and project. I'll get back to you within 24 hours.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://x.com/TrollingBarba" target="_blank" rel="noopener" class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            <span>@TrollingBarba</span>
+                        </a>
+                        <a href="https://www.instagram.com/tbarba_/" target="_blank" rel="noopener" class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            <span>@tbarba_</span>
+                        </a>
+                        <a href="https://www.youtube.com/@tbarba/featured" target="_blank" rel="noopener" class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12z"/></svg>
+                            <span>YouTube Channel</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/trollingbarba@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Project Inquiry from Portfolio">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="channel">YouTube Channel URL</label>
+                            <input type="url" id="channel" name="channel" placeholder="https://youtube.com/@yourchannel">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="long-form">Long-Form Video Editing</option>
+                                <option value="shorts">Shorts & Clips</option>
+                                <option value="package">Full Package (Video + Shorts + Thumbnail)</option>
+                                <option value="3d-motion">3D & Motion Graphics</option>
+                                <option value="thumbnails">Thumbnails Only</option>
+                                <option value="retainer">Monthly Retainer</option>
+                                <option value="other">Other / Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your channel, the type of content you create, and what you need help with..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/tbarba-logo.svg" alt="TBarba Logo" class="footer-logo-img">
+                    <span class="logo-text">TBARBA</span>
+                    <p>Professional Video Editor for YouTube Creators</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://x.com/TrollingBarba" target="_blank" rel="noopener">Twitter/X</a>
+                    <a href="https://www.instagram.com/tbarba_/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.youtube.com/@tbarba/featured" target="_blank" rel="noopener">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TBarba. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

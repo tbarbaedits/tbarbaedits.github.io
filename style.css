@@ -171,8 +171,9 @@ img {
 }
 
 .nav-logo-img {
-    width: 38px;
+    width: 42px;
     height: auto;
+    filter: drop-shadow(0 0 8px rgba(124, 92, 255, 0.45));
 }
 
 .logo-text {
@@ -182,10 +183,21 @@ img {
     letter-spacing: -0.02em;
 }
 
+.footer-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 .footer-logo-img {
-    width: 32px;
+    width: 42px;
     height: auto;
-    margin-bottom: 4px;
+    filter: drop-shadow(0 0 8px rgba(124, 92, 255, 0.45));
+}
+
+.footer-brand-row .logo-text {
+    font-size: 1.3rem;
 }
 
 .nav-links {

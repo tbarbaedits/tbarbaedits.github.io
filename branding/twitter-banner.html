@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TBarba X/Twitter Banner — 1500×500</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+        background: #1a1a1a;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #fff;
+    }
+
+    .banner {
+        width: 1500px;
+        height: 500px;
+        position: relative;
+        background:
+            radial-gradient(ellipse 800px 500px at 15% 110%, rgba(124, 92, 255, 0.28) 0%, transparent 60%),
+            radial-gradient(ellipse 700px 500px at 85% 50%, rgba(168, 85, 247, 0.18) 0%, transparent 65%),
+            linear-gradient(135deg, #0a0a0b 0%, #111112 100%);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    /* Subtle grid overlay */
+    .banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%);
+    }
+
+    /* Corner accent line */
+    .banner::after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #7c5cff);
+    }
+
+    /* Profile-pic-safe zone is bottom-left ~260x260 — keep text away from there */
+
+    .content {
+        position: absolute;
+        left: 300px;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 760px;
+        z-index: 2;
+    }
+
+    .eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #7c5cff;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: #7c5cff;
+    }
+
+    .headline {
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
+        font-size: 82px;
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+        color: #ffffff;
+        margin-bottom: 28px;
+    }
+
+    .headline .obsession {
+        background: linear-gradient(135deg, #7c5cff 0%, #a855f7 50%, #d946ef 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 24px rgba(124, 92, 255, 0.45));
+    }
+
+    .ticker {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        color: rgba(255,255,255,0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .ticker .dot {
+        width: 4px;
+        height: 4px;
+        background: #7c5cff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(124,92,255,0.8);
+    }
+
+    .ticker .highlight {
+        color: #fff;
+    }
+
+    /* Right-side reserved zone — invisible, for user's Photoshop logo */
+    .logo-zone {
+        position: absolute;
+        right: 120px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 280px;
+        height: 280px;
+        z-index: 2;
+    }
+
+    /* Top-right metadata */
+    .meta {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        text-align: right;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        color: rgba(255,255,255,0.45);
+        text-transform: uppercase;
+        padding-top: 12px;
+    }
+
+    /* Safe-zone guide (only visible when ?guide=1) */
+    body.guide .banner .profile-safe {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        width: 220px;
+        height: 220px;
+        border: 2px dashed rgba(255,0,0,0.5);
+        border-radius: 50%;
+        z-index: 10;
+    }
+    body.guide .banner .mobile-safe {
+        position: absolute;
+        inset: 60px 0;
+        border: 2px dashed rgba(0,255,255,0.4);
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* Instructions shown outside the banner */
+    .instructions {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.8);
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-size: 13px;
+        max-width: 900px;
+        text-align: center;
+        line-height: 1.6;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.75);
+    }
+    .instructions b { color: #7c5cff; }
+    .instructions code {
+        background: rgba(124,92,255,0.15);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <div class="meta">TBARBA · EST. 2026</div>
+
+    <div class="content">
+        <div class="eyebrow">Video Editor for YouTubers</div>
+        <h1 class="headline">RETENTION IS THE<br><span class="obsession">OBSESSION</span></h1>
+        <div class="ticker">
+            <span class="highlight">GAMING</span>
+            <span class="dot"></span>
+            <span class="highlight">SHORTS</span>
+            <span class="dot"></span>
+            <span class="highlight">3D / MOTION</span>
+            <span class="dot"></span>
+            <span>FROM $75/VIDEO</span>
+            <span class="dot"></span>
+            <span>DMs OPEN</span>
+        </div>
+    </div>
+
+    <div class="logo-zone"></div>
+
+    <div class="profile-safe"></div>
+    <div class="mobile-safe"></div>
+</div>
+
+<div class="instructions">
+    <b>How to export:</b> Open this file in Chrome/Edge. Right-click the banner → <b>"Capture node screenshot"</b> in DevTools (F12 → Elements → right-click <code>&lt;div class="banner"&gt;</code>). Exports at exact 1500×500 PNG.
+    <br>Or add <code>?guide=1</code> to the URL to see profile-pic + mobile safe zones.
+</div>
+
+<script>
+    if (new URLSearchParams(location.search).get('guide') === '1') {
+        document.body.classList.add('guide');
+        document.querySelector('.instructions').innerHTML =
+            '<b>Safe-zone guide:</b> Red dashed circle = where your profile picture will overlap. Cyan dashed box = mobile-safe zone (stuff outside gets cropped on phones).';
+    }
+</script>
+
+</body>
+</html>

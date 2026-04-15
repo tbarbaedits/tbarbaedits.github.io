@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
     <!-- Navigation -->
@@ -116,23 +116,32 @@
     <!-- Software Bar -->
     <section class="tools-bar">
         <div class="container">
+            <div class="tools-eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>TOOLKIT</span>
+                <span class="eyebrow-line"></span>
+            </div>
             <div class="tools-grid">
                 <div class="tool-item">
                     <img src="assets/premiere-logo.png" alt="Premiere Pro" class="tool-logo-img">
                     <span class="tool-name">Premiere Pro</span>
                 </div>
+                <span class="tool-dot"></span>
                 <div class="tool-item">
                     <img src="assets/aftereffects-logo.png" alt="After Effects" class="tool-logo-img">
                     <span class="tool-name">After Effects</span>
                 </div>
+                <span class="tool-dot"></span>
                 <div class="tool-item">
                     <img src="assets/photoshop-logo.png" alt="Photoshop" class="tool-logo-img">
                     <span class="tool-name">Photoshop</span>
                 </div>
+                <span class="tool-dot"></span>
                 <div class="tool-item">
                     <img src="assets/blender-logo.png" alt="Blender" class="tool-logo-img">
                     <span class="tool-name">Blender</span>
                 </div>
+                <span class="tool-dot"></span>
                 <div class="tool-item">
                     <img src="assets/maya-logo.png" alt="Maya" class="tool-logo-img">
                     <span class="tool-name">Maya</span>
@@ -146,7 +155,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
-                <h2 class="section-title">Selected Work</h2>
+                <h2 class="section-title">Selected <span class="title-gradient">Work</span></h2>
                 <p class="section-desc">A showcase of my editing, motion graphics, and 3D work across different content styles.</p>
             </div>
 
@@ -176,7 +185,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Services</span>
-                <h2 class="section-title">What I Do</h2>
+                <h2 class="section-title">What I <span class="title-gradient">Do</span></h2>
                 <p class="section-desc">Full-service video editing tailored for YouTube creators. From raw footage to upload-ready content.</p>
             </div>
             <div class="services-grid">
@@ -245,7 +254,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Pricing</span>
-                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <h2 class="section-title">Simple, Transparent <span class="title-gradient">Pricing</span></h2>
                 <p class="section-desc">Choose per-video pricing to start, or save with a monthly retainer package.</p>
             </div>
 
@@ -399,7 +408,7 @@
             <div class="about-grid">
                 <div class="about-content">
                     <span class="section-tag">About</span>
-                    <h2 class="section-title">The Editor Behind<br>the Edits</h2>
+                    <h2 class="section-title">The Editor Behind<br>the <span class="title-gradient">Edits</span></h2>
                     <p class="about-text">
                         I'm Barba, a video editor and 3D artist who's been deep in content creation
                         and post-production for years. I specialize in making YouTube videos that viewers
@@ -470,12 +479,20 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Testimonials</span>
-                <h2 class="section-title">What Creators Say</h2>
+                <h2 class="section-title">What Creators <span class="title-gradient">Say</span></h2>
             </div>
             <div class="testimonials-placeholder">
+                <div class="placeholder-corner placeholder-corner-tl"></div>
+                <div class="placeholder-corner placeholder-corner-tr"></div>
+                <div class="placeholder-corner placeholder-corner-bl"></div>
+                <div class="placeholder-corner placeholder-corner-br"></div>
+                <div class="placeholder-eyebrow">
+                    <span class="eyebrow-line"></span>
+                    <span>EARLY ACCESS</span>
+                </div>
                 <p>I'm currently building my roster of long-term YouTube clients.<br>
                 <strong>Be one of the first</strong> &mdash; and get my best rates while I grow.</p>
-                <a href="#contact" class="btn btn-primary">
+                <a href="#contact" class="btn btn-primary magnetic">
                     <span>Claim Early Access Pricing</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -489,15 +506,15 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <span class="section-tag">Contact</span>
-                    <h2 class="section-title">Let's Make<br>Something Great</h2>
+                    <h2 class="section-title">Let's Make<br>Something <span class="title-gradient">Great</span></h2>
                     <p class="contact-text">
                         Ready to level up your content? Drop me a message with details about
                         your channel and project. I'll get back to you within 24 hours.
                     </p>
                     <div class="contact-links">
-                        <a href="https://x.com/TrollingBarba" target="_blank" rel="noopener" class="contact-link">
+                        <a href="https://x.com/tbarbaedits" target="_blank" rel="noopener" class="contact-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                            <span>@TrollingBarba</span>
+                            <span>@tbarbaedits</span>
                         </a>
                         <a href="https://www.instagram.com/tbarba_/" target="_blank" rel="noopener" class="contact-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -571,13 +588,14 @@
                     <p>Professional Video Editor for YouTube Creators</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://x.com/TrollingBarba" target="_blank" rel="noopener">Twitter/X</a>
+                    <a href="https://x.com/tbarbaedits" target="_blank" rel="noopener">Twitter/X</a>
                     <a href="https://www.instagram.com/tbarba_/" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://www.youtube.com/@tbarba/featured" target="_blank" rel="noopener">YouTube</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 TBarba. All rights reserved.</p>
+                <p class="footer-copy">&copy; 2026 TBARBA &bull; ALL RIGHTS RESERVED</p>
+                <p class="footer-tagline">RETENTION IS THE OBSESSION</p>
             </div>
         </div>
     </footer>
